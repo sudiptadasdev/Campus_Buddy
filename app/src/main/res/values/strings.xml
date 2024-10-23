@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Campus_Buddy</string>
+    <string name="title_hint">Enter Title</string>
+    <string name="details_hint">Enter Details</string>
+    <string name="skill_hint">Enter Skill or Subject</string>
+    <string name="submit_request">Submit Request</string>
+
 </resources>

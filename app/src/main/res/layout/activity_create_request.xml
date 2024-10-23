@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@android:color/white"
+    tools:context=".CreateRequestActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Request"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/lavender"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"/>
+
+    <!-- CardView to hold the form with rounded corners and elevation -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <!-- Inner LinearLayout for form content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Title EditText -->
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:padding="16dp"
+                android:hint="Enter Title"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/lavender"/>
+
+            <!-- Details EditText -->
+            <EditText
+                android:id="@+id/et_details"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:padding="16dp"
+                android:hint="Enter Details"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/lavender"/>
+
+            <!-- Skill/Subject EditText -->
+            <EditText
+                android:id="@+id/et_skill"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:padding="16dp"
+                android:hint="Enter Skill or Subject"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Submit Request Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_submit_request"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Submit Request"
+                android:textSize="18sp"
+                android:backgroundTint="@color/lavender"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="24dp"
+                app:cornerRadius="16dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+
+
+
