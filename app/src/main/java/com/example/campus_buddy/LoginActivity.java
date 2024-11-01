@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
                                         Toast.makeText(LoginActivity.this, "com.example.campus_buddy.Login Successful", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                        startActivity(new Intent(LoginActivity.this, EventAdapter.class));
                                         finish();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {

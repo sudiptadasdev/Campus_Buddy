@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#8692f7</color>
     <color name="purple">#8692f7</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="gray">#E0E0E0</color>
 </resources>
