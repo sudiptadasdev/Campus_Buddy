@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "628278889605",
     "project_id": "campus-buddy-8918a",
-    "storage_bucket": "campus-buddy-8918a.appspot.com"
+    "storage_bucket": "campus-buddy-8918a.firebasestorage.app"
   },
   "client": [
     {

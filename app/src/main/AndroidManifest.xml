@@ -24,6 +24,11 @@
 
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".ChooseRoleActivity"></activity>
+        <activity android:name=".OrganizationSignUpActivity"></activity>
+        <activity android:name=".OrgHomeActivity"></activity>
+        <activity android:name=".StudentHomeActivity"></activity>
+
     </application>
 
 </manifest>

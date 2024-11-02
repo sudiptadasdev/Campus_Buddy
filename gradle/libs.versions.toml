@@ -12,6 +12,7 @@ firebaseAuth = "23.0.0"
 playServicesAuth="20.4.0"
 gbutton="v1.0.19"
 googleGmsGoogleServices = "4.4.2"
+firebaseFirestore = "25.1.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -25,6 +26,7 @@ play-services-tasks = { group = "com.google.android.gms", name = "play-services-
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 play-services-auth={group="com.google.android.gms" ,name="play-services-auth" ,version.ref="playServicesAuth"}
 tutorial-android={group="com.github.TutorialsAndroid",name="GButton", version.ref="gbutton"}
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 
 
 [plugins]

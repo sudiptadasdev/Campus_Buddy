@@ -35,6 +35,16 @@
                 android:textStyle="bold"
                 android:textColor="@color/lavender"/>
 
+            <!-- Spinner for user type selection -->
+            <Spinner
+                android:id="@+id/userTypeSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:entries="@array/user_types"
+                android:padding="8dp"
+                android:spinnerMode="dropdown" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -68,7 +78,7 @@
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/lavender"
-                app:cornerRadius = "20dp"/>
+                app:cornerRadius="20dp"/>
 
             <TextView
                 android:id="@+id/forgot_password"
@@ -86,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sign in with Google"
                 android:id="@+id/googleBtn"
-                app:isDarkTheme = "true"
+                app:isDarkTheme="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="40dp"
