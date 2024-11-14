@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 public class StudentHomeActivity extends AppCompatActivity {
@@ -14,12 +15,20 @@ public class StudentHomeActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private String email;
     private Button editProfileButton;
+    private FirebaseAuth auth;
+    private Button logoutButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_student_home);
+        logoutButton = findViewById(R.id.logoutButton);
+
+
+        auth = FirebaseAuth.getInstance();
 
         firestore = FirebaseFirestore.getInstance();
         studentName = findViewById(R.id.studentName);
@@ -35,6 +44,17 @@ public class StudentHomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(StudentHomeActivity.this, EditProfileActivity.class);
                 startActivity(intent);
+            }
+        });
+
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.signOut();
+                Intent intent = new Intent(StudentHomeActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

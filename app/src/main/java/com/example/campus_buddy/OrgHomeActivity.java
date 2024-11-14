@@ -1,9 +1,14 @@
 package com.example.campus_buddy;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -12,6 +17,11 @@ public class OrgHomeActivity extends AppCompatActivity {
     private TextView orgName, orgBio;
     private FirebaseFirestore firestore;
     private String email;
+    private Button editProfileButton;
+    private FirebaseAuth auth;
+    private Button logoutButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +31,32 @@ public class OrgHomeActivity extends AppCompatActivity {
         orgName = findViewById(R.id.orgName);
         orgBio = findViewById(R.id.orgDesc);
         email = getIntent().getStringExtra("email");
+        logoutButton = findViewById(R.id.logoutButton);
+
+
+        auth = FirebaseAuth.getInstance();
+
+
+        editProfileButton = findViewById(R.id.editProfileButton);
+
         loadOrgData();
+
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrgHomeActivity.this, EditOrgProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.signOut();
+                Intent intent = new Intent(OrgHomeActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void loadOrgData() {

@@ -29,6 +29,7 @@
         <activity android:name=".OrgHomeActivity"></activity>
         <activity android:name=".StudentHomeActivity"></activity>
         <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".EditOrgProfileActivity"></activity>
 
     </application>
 

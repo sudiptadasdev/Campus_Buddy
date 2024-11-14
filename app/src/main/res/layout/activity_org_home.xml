@@ -47,13 +47,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="Student Bio"
+                android:text="Organization Description"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
 
 
+
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"/>
 
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>

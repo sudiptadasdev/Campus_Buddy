@@ -23,7 +23,7 @@ public class ChooseRoleActivity extends AppCompatActivity {
         organizationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Navigate to OrganizationSignUpActivity
+
                 Intent orgIntent = new Intent(ChooseRoleActivity.this, OrganizationSignUpActivity.class);
                 startActivity(orgIntent);
             }
@@ -33,7 +33,6 @@ public class ChooseRoleActivity extends AppCompatActivity {
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Navigate to SignUpActivity
                 Intent userIntent = new Intent(ChooseRoleActivity.this, SignUpActivity.class);
                 startActivity(userIntent);
             }
