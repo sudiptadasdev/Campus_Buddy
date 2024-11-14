@@ -20,8 +20,6 @@ public class ChooseRoleActivity extends AppCompatActivity {
         // Initialize buttons from layout
         organizationButton = findViewById(R.id.organizationButton);
         userButton = findViewById(R.id.userButton);
-
-        // Set listener for organization signup route
         organizationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

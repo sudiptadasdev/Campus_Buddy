@@ -53,8 +53,6 @@ public class OrganizationSignUpActivity extends AppCompatActivity {
                 String password = orgPassword.getText().toString().trim();
                 String description = orgDescription.getText().toString().trim();
                 String organizationId = orgId.getText().toString().trim();
-
-                // Check if fields are empty
                 if (name.isEmpty()) {
                     orgName.setError("Organization Name cannot be empty");
                     return;
@@ -72,22 +70,17 @@ public class OrganizationSignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Create a new user with Firebase Authentication
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Get unique user ID (UID)
                             String userId = auth.getCurrentUser().getUid();
 
-                            // Create a map to store organization details
                             Map<String, Object> organization = new HashMap<>();
                             organization.put("name", name);
                             organization.put("email", email);
                             organization.put("description", description);
                             organization.put("organization_id", organizationId);
-
-                            // Store data in Firestore
                             DocumentReference docRef = firestore.collection("Organization").document(userId);
                             docRef.set(organization).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

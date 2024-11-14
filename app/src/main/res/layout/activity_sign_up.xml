@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pagebkg"
+
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".SignUpActivity">
@@ -39,7 +39,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+
                 android:drawablePadding="8dp"
                 android:hint="First Name"
                 android:padding="8dp"
@@ -51,7 +51,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+
                 android:drawablePadding="8dp"
                 android:hint="Last Name"
                 android:padding="8dp"
@@ -63,7 +63,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+
                 android:drawablePadding="8dp"
                 android:hint="Email"
                 android:padding="8dp"
@@ -75,7 +75,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+
                 android:drawablePadding="8dp"
                 android:hint="Password"
                 android:padding="8dp"
@@ -87,7 +87,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+
                 android:drawablePadding="8dp"
                 android:hint="Bio"
                 android:padding="8dp"
@@ -100,7 +100,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+
                 android:drawablePadding="8dp"
                 android:hint="Student ID"
                 android:padding="8dp"

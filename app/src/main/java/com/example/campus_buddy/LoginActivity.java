@@ -52,8 +52,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        // Initialize views
         userTypeSpinner = findViewById(R.id.userTypeSpinner);
         loginEmail = findViewById(R.id.login_email);
         loginPassword = findViewById(R.id.login_password);
@@ -63,21 +61,16 @@ public class LoginActivity extends AppCompatActivity {
         googleBtn = findViewById(R.id.googleBtn);
 
         auth = FirebaseAuth.getInstance();
-
-        // Set up user type spinner selection
         userTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedUserType = parent.getItemAtPosition(position).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                selectedUserType = "student"; // Default to "student" if nothing is selected
+                selectedUserType = "student";
             }
         });
-
-        // Handle login button click
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onSuccess(AuthResult authResult) {
                                         Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                         Intent intent;
-                                        // Redirect to different activities based on user type
+
                                         if (selectedUserType.equals("Student")) {
                                             intent = new Intent(LoginActivity.this, StudentHomeActivity.class);
                                         } else {

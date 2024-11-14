@@ -4,43 +4,52 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class OrgHomeActivity extends AppCompatActivity {
 
     private TextView orgName, orgBio;
     private FirebaseFirestore firestore;
-    private String userId;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_org_home);
-
-        // Initialize Firebase and Views
         firestore = FirebaseFirestore.getInstance();
         orgName = findViewById(R.id.orgName);
         orgBio = findViewById(R.id.orgDesc);
+        email = getIntent().getStringExtra("email");
+        loadOrgData();
+    }
 
-        // Assume userId is passed or fetched after login
-        userId = getIntent().getStringExtra("USER_ID");
+    private void loadOrgData() {
+        if (email == null || email.isEmpty()) {
+            orgName.setText("Email not provided");
+            orgBio.setText("No bio available");
+            return;
+        }
 
-        // Load student data from Firestore
-        DocumentReference docRef = firestore.collection("students").document(userId);
-        docRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                // Retrieve and display name and bio
-                String name = documentSnapshot.getString("name");
-                String bio = documentSnapshot.getString("bio");
+        firestore.collection("Organization")
+                .whereEqualTo("email", email)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                        String name = documentSnapshot.getString("name");
+                        String bio = documentSnapshot.getString("description");
 
-                orgName.setText(name != null ? name : "Organization Name");
-                orgBio.setText(bio != null ? bio : "Organization Description");
-            }
-        }).addOnFailureListener(e -> {
-            orgName.setText("Error loading name");
-            orgBio.setText("Error loading bio");
-        });
+                        orgName.setText(name != null ? "Welcome  " + name : "Org Name");
+                        orgBio.setText(bio != null ? bio : "Org description");
+                    } else {
+                        orgName.setText("Org not found");
+                        orgBio.setText("No bio available");
+                    }
+                }).addOnFailureListener(e -> {
+                    orgName.setText("Error loading name");
+                    orgBio.setText("Error loading bio");
+                    e.printStackTrace();
+                });
     }
 }

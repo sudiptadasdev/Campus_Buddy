@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="24dp"
     android:gravity="center"
-    android:background="@drawable/pagebkg">
+    android:orientation="vertical"
+    android:padding="24dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome"
-        android:textSize="28sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:text="Welcome"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <!-- CardView to show student details -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:padding="16dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        android:padding="16dp">
+        app:cardElevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,21 +35,23 @@
                 android:id="@+id/orgName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="Student Name"
-                android:textSize="24sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <!-- Displaying the student's bio -->
             <TextView
                 android:id="@+id/orgDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:text="Student Bio"
-                android:textSize="18sp"
                 android:textColor="@color/black"
-                android:layout_marginBottom="16dp"/>
+                android:textSize="18sp" />
+
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
