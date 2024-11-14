@@ -2,22 +2,18 @@ package com.example.campus_buddy;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
-
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
 
 public class CreateEventActivity extends AppCompatActivity {
 
@@ -25,9 +21,10 @@ public class CreateEventActivity extends AppCompatActivity {
     private TextView dateTextView, timeTextView;
     private Button saveEventButton;
     private Timestamp eventTimestamp;
+    private Calendar eventCalendar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
@@ -39,21 +36,24 @@ public class CreateEventActivity extends AppCompatActivity {
         timeTextView = findViewById(R.id.timeTextView);
         saveEventButton = findViewById(R.id.saveEventButton);
 
+        // Initialize the Calendar instance
+        eventCalendar = Calendar.getInstance();
+
         dateTextView.setOnClickListener(v -> showDatePickerDialog());
         timeTextView.setOnClickListener(v -> showTimePickerDialog());
-
         saveEventButton.setOnClickListener(v -> saveEvent());
     }
 
-    // Implement showDatePickerDialog(), showTimePickerDialog(), and saveEvent()
     private void showDatePickerDialog() {
         Calendar calendar = Calendar.getInstance();
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 (view, year, month, dayOfMonth) -> {
-                    calendar.set(year, month, dayOfMonth);
+                    // Update the eventCalendar with the selected date
+                    eventCalendar.set(Calendar.YEAR, year);
+                    eventCalendar.set(Calendar.MONTH, month);
+                    eventCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                     dateTextView.setText(new SimpleDateFormat("MM/dd/yyyy", Locale.getDefault())
-                            .format(calendar.getTime()));
-                    updateEventTimestamp(calendar);
+                            .format(eventCalendar.getTime()));
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -65,20 +65,19 @@ public class CreateEventActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                 (view, hourOfDay, minute) -> {
-                    calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                    calendar.set(Calendar.MINUTE, minute);
+                    // Update the eventCalendar with the selected time
+                    eventCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                    eventCalendar.set(Calendar.MINUTE, minute);
                     timeTextView.setText(new SimpleDateFormat("hh:mm a", Locale.getDefault())
-                            .format(calendar.getTime()));
-                    updateEventTimestamp(calendar);
+                            .format(eventCalendar.getTime()));
+
+                    // Update the eventTimestamp with the selected date and time
+                    eventTimestamp = new Timestamp(eventCalendar.getTime());
                 },
                 calendar.get(Calendar.HOUR_OF_DAY),
                 calendar.get(Calendar.MINUTE),
                 false);
         timePickerDialog.show();
-    }
-
-    private void updateEventTimestamp(Calendar calendar) {
-        eventTimestamp = new Timestamp(calendar.getTime());
     }
 
     private void saveEvent() {
@@ -91,20 +90,15 @@ public class CreateEventActivity extends AppCompatActivity {
             return;
         }
 
-        // Create an Event object
         Event event = new Event(title, eventTimestamp, summary, location);
-
-        // Save to Firestore
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Event")
-                .add(event)
+        db.collection("Event").add(event)
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(this, "Event saved", Toast.LENGTH_SHORT).show();
                     finish();  // Close the activity
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Error saving event", Toast.LENGTH_SHORT).show();
-                    Log.e("Firestore", "Error adding document", e);
                 });
     }
 }

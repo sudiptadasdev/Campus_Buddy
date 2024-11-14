@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class Event {
-    private String title;
+    private String name;
     private Timestamp date;
     private String description;
     private String location;
@@ -15,13 +15,13 @@ public class Event {
     public Event() {}
 
     public Event(String title, Timestamp date, String description, String location) {
-        this.title = title;
+        this.name = title;
         this.date = date;
         this.description = description;
         this.location = location;
     }
 
-    public String getTitle() { return title; }
+    public String getName() { return name; }
     public Timestamp getDate() { return date; }
     public String getDescription() { return description; }
     public String getLocation() { return location; }

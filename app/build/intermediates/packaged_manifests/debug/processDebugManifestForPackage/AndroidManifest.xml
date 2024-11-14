@@ -31,7 +31,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.Campus_Buddy" >
         <activity
-            android:name="com.example.campus_buddy.MainActivity"
+            android:name="com.example.campus_buddy.LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,8 +39,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.campus_buddy.LoginActivity" />
         <activity android:name="com.example.campus_buddy.SignUpActivity" />
+        <activity android:name="com.example.campus_buddy.CreateEventActivity" />
+        <activity android:name="com.example.campus_buddy.OffersFragment" />
+        <activity android:name="com.example.campus_buddy.EventsFragment" />
+        <activity android:name="com.example.campus_buddy.MainActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

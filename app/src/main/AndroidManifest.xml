@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Campus_Buddy"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".CreateEventActivity"></activity>
+        <activity android:name=".OffersFragment"></activity>
+        <activity android:name=".EventsFragment"></activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

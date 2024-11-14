@@ -1,24 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@android:color/white">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <!-- Filter Bar for title and date range search -->
+    <LinearLayout
+        android:id="@+id/filterBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:layout_alignParentTop="true"> <!-- Align to top of the screen -->
+
+        <!-- SearchView for title filter -->
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="visible"
+            android:queryHint="Search by title" />
+
+        <!-- Start Date filter -->
+        <TextView
+            android:id="@+id/startDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@android:drawable/edit_text"
+            android:text="Start Date" />
+
+        <!-- End Date filter -->
+        <TextView
+            android:id="@+id/endDateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@android:drawable/edit_text"
+            android:text="End Date" />
+    </LinearLayout>
+
+    <!-- RecyclerView to display events -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/filterBar" /> <!-- Position below filter bar -->
 
+    <!-- Floating Action Button for adding events -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addEventFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="Add Event"
-        app:srcCompat="@drawable/ic_add"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:visibility="gone"/>
-</LinearLayout>
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_add"/> <!-- Ensure you have an add icon in drawable -->
+</RelativeLayout>
