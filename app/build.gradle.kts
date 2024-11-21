@@ -35,9 +35,11 @@ android {
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.1.1"))
 
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-database")
-    implementation("com.google.firebase:firebase-firestore")
+    implementation(libs.google.firebase.auth)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.firestore)
+    implementation (libs.material.v190)
+    implementation (libs.drawerlayout)   // for DrawerLayout
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -47,14 +49,19 @@ dependencies {
 
     implementation(libs.play.services.auth)
     implementation(libs.tutorial.android)
+    implementation(libs.car.ui.lib)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.recyclerview:recyclerview:1.3.1")
     implementation ("androidx.cardview:cardview:1.0.0")
+    implementation (libs.drawerlayout.v111)
+    implementation (libs.material.v140)
+
 
 }

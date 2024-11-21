@@ -11,6 +11,18 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <queries>
+
+        <!-- Required for querying the IME service at runtime -->
+        <intent>
+            <action android:name="android.view.InputMethod" />
+        </intent>
+        <!-- Required for querying the plugin at runtime -->
+        <provider
+            android:name="com.android.car.ui.plugin.PluginNameProvider"
+            android:authorities="com.android.car.ui.plugin" />
+    </queries>
+
     <permission
         android:name="com.example.campus_buddy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
@@ -40,10 +52,18 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.campus_buddy.SignUpActivity" />
+        <activity
+            android:name="com.example.campus_buddy.RequestHomePage"
+            android:parentActivityName="com.example.campus_buddy.HomePage" />
         <activity android:name="com.example.campus_buddy.CreateEventActivity" />
+        <activity android:name="com.example.campus_buddy.CreateRequestActivity" />
         <activity android:name="com.example.campus_buddy.OffersFragment" />
         <activity android:name="com.example.campus_buddy.EventsFragment" />
         <activity android:name="com.example.campus_buddy.MainActivity" />
+        <activity android:name="com.example.campus_buddy.HomePage" />
+        <activity android:name="com.example.campus_buddy.RequestsFragment" />
+        <activity android:name="com.example.campus_buddy.OfferHomePage" />
+        <activity android:name="com.example.campus_buddy.EditProfileActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"
@@ -95,6 +115,19 @@
                 android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
+
+        <provider
+            android:name="com.android.car.ui.core.CarUiInstaller"
+            android:authorities="com.example.campus_buddy.CarUiInstaller"
+            android:directBootAware="true"
+            android:exported="false"
+            android:process="@string/car_ui_installer_process_name" />
+        <provider
+            android:name="com.android.car.ui.core.SearchResultsProvider"
+            android:authorities="com.example.campus_buddy.SearchResultsProvider"
+            android:exported="true"
+            android:process="@string/car_ui_installer_process_name"
+            android:readPermission="com.android.car.ui.READ_SEARCH_RESULTS" />
 
         <activity
             android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
