@@ -1,0 +1,3 @@
+com.example.campus_buddy.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

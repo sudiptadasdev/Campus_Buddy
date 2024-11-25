@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accentColor">#03DAC5</color>
+    <color name="black">#FF000000</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="gray">#E0E0E0</color>
+    <color name="lavender">#8692f7</color>
+    <color name="primaryColor">#6200EE</color>
+    <color name="primaryColorDark">#3700B3</color>
+    <color name="purple">#8692f7</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Campus_Buddy</string>
+    <string name="closeDrawer">Close Drawer</string>
+    <string name="gcm_defaultSenderId" translatable="false">628278889605</string>
+    <string name="google_api_key" translatable="false">AIzaSyDEWmQSCbblixe1lRYSuKgbmlJlDM0SAHA</string>
+    <string name="google_app_id" translatable="false">1:628278889605:android:f53f1996a2fb282cc86dec</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDEWmQSCbblixe1lRYSuKgbmlJlDM0SAHA</string>
+    <string name="google_storage_bucket" translatable="false">campus-buddy-8918a.appspot.com</string>
+    <string name="openDrawer">Open Drawer</string>
+    <string name="project_id" translatable="false">campus-buddy-8918a</string>
+    <style name="Base.Theme.Campus_Buddy" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Campus_Buddy" parent="Base.Theme.Campus_Buddy"/>
+</resources>

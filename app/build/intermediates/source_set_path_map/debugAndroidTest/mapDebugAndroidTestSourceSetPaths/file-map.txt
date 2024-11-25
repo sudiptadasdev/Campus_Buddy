@@ -1,0 +1,6 @@
+com.example.campus_buddy.test.app-annotation-experimental-1.3.0-0 C:\Users\sneha\.gradle\caches\transforms-4\399d794f94bce77044488592493ee0cc\transformed\annotation-experimental-1.3.0\res
+com.example.campus_buddy.test.app-core-1.5.0-1 C:\Users\sneha\.gradle\caches\transforms-4\71611a3963fea4b240b2e0ee7e1d0d8d\transformed\core-1.5.0\res
+com.example.campus_buddy.test.app-androidTest-2 C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\build\generated\res\resValues\androidTest\debug
+com.example.campus_buddy.test.app-mergeDebugAndroidTestResources-3 C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.example.campus_buddy.test.app-mergeDebugAndroidTestResources-4 C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.example.campus_buddy.test.app-debugAndroidTest-5 C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
