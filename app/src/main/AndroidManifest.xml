@@ -32,7 +32,8 @@
         <activity android:name=".HomePage"></activity>
         <activity android:name=".RequestsFragment"></activity>
         <activity android:name=".OfferHomePage"></activity>
-        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".CreateOfferActivity"></activity>
+        <activity android:name=".EditRequestActivity"></activity>
     </application>
 
 </manifest>

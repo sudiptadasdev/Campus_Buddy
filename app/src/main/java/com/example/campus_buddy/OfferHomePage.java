@@ -3,12 +3,9 @@ package com.example.campus_buddy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class OfferHomePage extends AppCompatActivity {
 
@@ -16,6 +13,16 @@ public class OfferHomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offer_home);
+
+        // Set up the toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Enable back navigation in the toolbar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         // Set up click listeners for the tiles
         LinearLayout createRequestTile = findViewById(R.id.createoffer_tile);
@@ -39,7 +46,7 @@ public class OfferHomePage extends AppCompatActivity {
         });
 
         viewAllRequestsTile.setOnClickListener(view -> {
-            Intent intent = new Intent(OfferHomePage.this, CreateOfferActivity.class);
+            Intent intent = new Intent(OfferHomePage.this, MainActivity.class);
             startActivity(intent);
         });
     }
@@ -47,6 +54,7 @@ public class OfferHomePage extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+            // Navigate back to the previous activity
             onBackPressed();
             return true;
         }

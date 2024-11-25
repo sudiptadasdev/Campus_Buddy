@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.1"
+cardviewVersion = "1.0.0"
 drawerlayout = "1.2.0"
 drawerlayoutVersion = "1.1.1"
 googleMaterial = "1.7.0"
@@ -20,6 +21,7 @@ googleGmsGoogleServices = "4.4.2"
 carUiLib = "2.6.0"
 
 [libraries]
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardviewVersion" }
 drawerlayout = { module = "androidx.drawerlayout:drawerlayout", version.ref = "drawerlayout" }
 drawerlayout-v111 = { module = "androidx.drawerlayout:drawerlayout", version.ref = "drawerlayoutVersion" }
 firebase-database = { module = "com.google.firebase:firebase-database" }

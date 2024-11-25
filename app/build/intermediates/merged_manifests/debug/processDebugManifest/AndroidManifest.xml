@@ -63,7 +63,8 @@
         <activity android:name="com.example.campus_buddy.HomePage" />
         <activity android:name="com.example.campus_buddy.RequestsFragment" />
         <activity android:name="com.example.campus_buddy.OfferHomePage" />
-        <activity android:name="com.example.campus_buddy.EditProfileActivity" />
+        <activity android:name="com.example.campus_buddy.CreateOfferActivity" />
+        <activity android:name="com.example.campus_buddy.EditRequestActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"
