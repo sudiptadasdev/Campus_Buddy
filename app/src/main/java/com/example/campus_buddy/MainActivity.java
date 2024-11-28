@@ -33,6 +33,22 @@ public class MainActivity extends AppCompatActivity {
         // Load Offers fragment by default
         loadFragment(new EventsFragment());
 
+        String fragmentToLoad = getIntent().getStringExtra("FRAGMENT_TO_LOAD");
+
+        if ("OffersFragment".equals(fragmentToLoad)) {
+            offersTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            eventsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            requestsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            loadFragment(new OffersFragment());
+        }
+
+        if ("RequestsFragment".equals(fragmentToLoad)) {
+            requestsTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            eventsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            offersTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            loadFragment(new RequestsFragment());
+        }
+
         // Set click listeners for the footer tabs
         eventsTab.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -34,6 +34,7 @@ public class OffersFragment extends Fragment {
     private List<Offers> offersList;
     private FloatingActionButton addOfferFab;
     private SearchView searchView;
+    private String curUser;
 
     @Nullable
     @Override
@@ -88,6 +89,22 @@ public class OffersFragment extends Fragment {
         });
     }
 
+    private void getCurrentUser() {
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            DocumentReference userRef = firestore.collection("Student").document(userId);
+
+            userRef.get().addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot.exists()) {
+                    curUser = documentSnapshot.getString("email");
+                }
+            }).addOnFailureListener(e -> {
+                Log.e("Firestore", "Error fetching user data", e);
+            });
+        }
+    }
+
     private void checkIfUserIsStudent() {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
@@ -96,7 +113,7 @@ public class OffersFragment extends Fragment {
 
             userRef.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {
-                    addOfferFab.setVisibility(View.VISIBLE);
+                    addOfferFab.setVisibility(View.INVISIBLE);
                 }
             }).addOnFailureListener(e -> {
                 Log.e("Firestore", "Error fetching user data", e);
@@ -105,6 +122,7 @@ public class OffersFragment extends Fragment {
     }
 
     private void fetchOffers(String titleQuery) {
+        getCurrentUser();
         CollectionReference offersRef = firestore.collection("Offer");
         Query query = offersRef;
 
@@ -115,6 +133,12 @@ public class OffersFragment extends Fragment {
                     String title = document.getString("title");
                     String skill = document.getString("skill");
                     String details = document.getString("details");
+                    String creator = document.getString("created_by");
+
+                    if (creator != null && creator.equals(curUser)) {
+                        Log.i("MyFilter", "Skipped title " + title);
+                        continue;
+                    }
 
                     Offers offer = new Offers(title, skill, details);
 
