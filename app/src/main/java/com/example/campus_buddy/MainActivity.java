@@ -1,6 +1,7 @@
 package com.example.campus_buddy;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,20 +18,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set up toolbar as action bar
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Enable back button
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         eventsTab = findViewById(R.id.eventsTab);
         offersTab = findViewById(R.id.offersTab);
         requestsTab = findViewById(R.id.requestsTab);
 
-        // Load Events fragment by default
+        // Load Offers fragment by default
         loadFragment(new EventsFragment());
+
+        String fragmentToLoad = getIntent().getStringExtra("FRAGMENT_TO_LOAD");
+
+        if ("OffersFragment".equals(fragmentToLoad)) {
+            offersTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            eventsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            requestsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            loadFragment(new OffersFragment());
+        }
+
+        if ("RequestsFragment".equals(fragmentToLoad)) {
+            requestsTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            eventsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            offersTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            loadFragment(new RequestsFragment());
+        }
 
         // Set click listeners for the footer tabs
         eventsTab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventsTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
-                offersTab.setBackgroundColor(getResources().getColor(R.color.gray));
-                requestsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+                updateTabSelection(eventsTab, offersTab, requestsTab);
                 loadFragment(new EventsFragment());
             }
         });
@@ -38,9 +61,7 @@ public class MainActivity extends AppCompatActivity {
         offersTab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                offersTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
-                eventsTab.setBackgroundColor(getResources().getColor(R.color.gray));
-                requestsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+                updateTabSelection(offersTab, eventsTab, requestsTab);
                 loadFragment(new OffersFragment());
             }
         });
@@ -48,13 +69,10 @@ public class MainActivity extends AppCompatActivity {
         requestsTab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                offersTab.setBackgroundColor(getResources().getColor(R.color.gray));
-                eventsTab.setBackgroundColor(getResources().getColor(R.color.gray));
-                requestsTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
+                updateTabSelection(requestsTab, eventsTab, offersTab);
                 loadFragment(new RequestsFragment());
             }
         });
-
     }
 
     private void loadFragment(Fragment fragment) {
@@ -62,5 +80,26 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
+    }
+
+    private void updateTabSelection(TextView selectedTab, TextView... otherTabs) {
+        selectedTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        for (TextView tab : otherTabs) {
+            tab.setBackgroundColor(getResources().getColor(R.color.gray));
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // Handle back button press
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack();
+            } else {
+                onBackPressed();
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

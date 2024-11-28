@@ -39,7 +39,8 @@ public class OfferHomePage extends AppCompatActivity {
         });
 
         viewAllRequestsTile.setOnClickListener(view -> {
-            Intent intent = new Intent(OfferHomePage.this, CreateOfferActivity.class);
+            Intent intent = new Intent(OfferHomePage.this, MainActivity.class);
+            intent.putExtra("FRAGMENT_TO_LOAD", "OffersFragment");
             startActivity(intent);
         });
     }

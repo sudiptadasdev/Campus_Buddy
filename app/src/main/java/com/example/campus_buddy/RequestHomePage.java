@@ -39,7 +39,8 @@ public class RequestHomePage extends AppCompatActivity {
         });
 
         viewAllRequestsTile.setOnClickListener(view -> {
-            Intent intent = new Intent(RequestHomePage.this, CreateRequestActivity.class);
+            Intent intent = new Intent(RequestHomePage.this, MainActivity.class);
+            intent.putExtra("FRAGMENT_TO_LOAD", "RequestsFragment");
             startActivity(intent);
         });
     }

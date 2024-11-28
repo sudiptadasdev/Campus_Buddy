@@ -34,6 +34,7 @@ public class RequestsFragment extends Fragment {
     private List<Requests> requestsList;
     private FloatingActionButton addRequestFab;
     private SearchView searchView;
+    private String curUser;
 
     @Nullable
     @Override
@@ -96,7 +97,23 @@ public class RequestsFragment extends Fragment {
 
             userRef.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {
-                    addRequestFab.setVisibility(View.VISIBLE);
+                    addRequestFab.setVisibility(View.INVISIBLE);
+                }
+            }).addOnFailureListener(e -> {
+                Log.e("Firestore", "Error fetching user data", e);
+            });
+        }
+    }
+
+    private void getCurrentUser() {
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            DocumentReference userRef = firestore.collection("Student").document(userId);
+
+            userRef.get().addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot.exists()) {
+                    curUser = documentSnapshot.getString("email");
                 }
             }).addOnFailureListener(e -> {
                 Log.e("Firestore", "Error fetching user data", e);
@@ -105,6 +122,7 @@ public class RequestsFragment extends Fragment {
     }
 
     private void fetchRequests(String titleQuery) {
+        getCurrentUser();
         CollectionReference requestsRef = firestore.collection("Request");
         Query query = requestsRef;
 
@@ -115,6 +133,12 @@ public class RequestsFragment extends Fragment {
                     String title = document.getString("title");
                     String skill = document.getString("skill");
                     String details = document.getString("details");
+                    String creator = document.getString("created_by");
+
+                    if (creator != null && creator.equals(curUser)) {
+                        Log.i("MyFilter", "Skipped title " + title);
+                        continue;
+                    }
 
                     Requests request = new Requests(title, skill, details);
 
