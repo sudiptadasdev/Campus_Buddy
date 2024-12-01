@@ -1,24 +1,22 @@
 package com.example.campus_buddy;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class EditRequestActivity extends AppCompatActivity {
 
     private EditText titleEditText, skillEditText, detailsEditText;
-    private Button saveButton;
-
+    private Button updateButton;
     private FirebaseFirestore firestore;
-    private String requestId; // ID of the request to edit
+    private String documentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,64 +26,66 @@ public class EditRequestActivity extends AppCompatActivity {
         // Initialize Firestore
         firestore = FirebaseFirestore.getInstance();
 
-        // Bind views
-        titleEditText = findViewById(R.id.editTitle);
-        skillEditText = findViewById(R.id.editSkill);
-        detailsEditText = findViewById(R.id.editDetails);
-        saveButton = findViewById(R.id.saveButton);
+        // Initialize views
+        titleEditText = findViewById(R.id.et_edit_title);
+        skillEditText = findViewById(R.id.et_edit_skill);
+        detailsEditText = findViewById(R.id.et_edit_details);
+        updateButton = findViewById(R.id.btn_submit_edit_request);
 
-        // Get the request ID passed via intent
-        requestId = getIntent().getStringExtra("REQUEST_ID");
-        loadRequestDetails();
+        // Retrieve extras
+        Intent intent = getIntent();
+        String title = intent.getStringExtra("title");
+        String skill = intent.getStringExtra("skill");
+        String details = intent.getStringExtra("details");
+        documentId = intent.getStringExtra("documentId");
+        System.out.println(documentId);
 
-        saveButton.setOnClickListener(v -> saveChanges());
+        // Populate fields
+        titleEditText.setText(title);
+        skillEditText.setText(skill);
+        detailsEditText.setText(details);
+
+        // Set click listener for the update button
+        updateButton.setOnClickListener(v -> updateRequest());
+
     }
 
-    private void loadRequestDetails() {
-        if (requestId == null) {
-            Toast.makeText(this, "Error: No request ID provided", Toast.LENGTH_SHORT).show();
-            finish();
+    private void updateRequest() {
+        // Retrieve the current values from the EditText fields
+        String currentTitle = titleEditText.getText().toString().trim();
+        String currentSkill = skillEditText.getText().toString().trim();
+        String currentDetails = detailsEditText.getText().toString().trim();
+
+        // Check if any field is empty before proceeding
+        if (currentTitle.isEmpty() || currentSkill.isEmpty() || currentDetails.isEmpty()) {
+            Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Fetch the request data from Firestore
-        DocumentReference requestRef = firestore.collection("Request").document(requestId);
-        requestRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                titleEditText.setText(documentSnapshot.getString("title"));
-                skillEditText.setText(documentSnapshot.getString("skill"));
-                detailsEditText.setText(documentSnapshot.getString("details"));
-            } else {
-                Toast.makeText(this, "Request not found", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }).addOnFailureListener(e -> {
-            Log.e("Firestore", "Error loading request details", e);
-            Toast.makeText(this, "Error loading request details", Toast.LENGTH_SHORT).show();
-            finish();
-        });
-    }
+        // Reference the specific document by documentId
+        DocumentReference requestDocRef = firestore.collection("Request").document(documentId);
 
-    private void saveChanges() {
-        String title = titleEditText.getText().toString().trim();
-        String skill = skillEditText.getText().toString().trim();
-        String details = detailsEditText.getText().toString().trim();
-
-        if (TextUtils.isEmpty(title) || TextUtils.isEmpty(skill) || TextUtils.isEmpty(details)) {
-            Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Update the request in Firestore
-        DocumentReference requestRef = firestore.collection("Request").document(requestId);
-        requestRef.update("title", title, "skill", skill, "details", details)
+        // Update the document fields in Firestore
+        requestDocRef.update(
+                        "title", currentTitle,
+                        "skill", currentSkill,
+                        "details", currentDetails
+                )
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "Request updated successfully", Toast.LENGTH_SHORT).show();
-                    finish(); // Close the activity
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("updatedTitle", currentTitle);
+                    resultIntent.putExtra("updatedSkill", currentSkill);
+                    resultIntent.putExtra("updatedDetails", currentDetails);
+                    resultIntent.putExtra("documentId", documentId);
+                    setResult(RESULT_OK, resultIntent);
+
+                    finish();
                 })
                 .addOnFailureListener(e -> {
-                    Log.e("Firestore", "Error updating request", e);
                     Toast.makeText(this, "Error updating request", Toast.LENGTH_SHORT).show();
                 });
     }
+
+
 }

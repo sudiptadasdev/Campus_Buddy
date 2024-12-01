@@ -65,9 +65,12 @@
         <activity android:name="com.example.campus_buddy.OfferHomePage" />
         <activity android:name="com.example.campus_buddy.CreateOfferActivity" />
         <activity android:name="com.example.campus_buddy.EditProfileActivity" />
-        <activity android:name="com.example.campus_buddy.ProfileHomeActivity" />
         <activity android:name="com.example.campus_buddy.MyOffersActivity" />
-        <activity android:name="com.example.campus_buddy.MyRequestsActivity" />
+        <activity android:name="com.example.campus_buddy.MyRequestActivity" />
+        <activity android:name="com.example.campus_buddy.EditRequestActivity" />
+        <activity android:name="com.example.campus_buddy.EditOfferActivity" />
+        <activity android:name="com.example.campus_buddy.MyAcceptedOffersActivity" />
+        <activity android:name="com.example.campus_buddy.MyAcceptedRequestsActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

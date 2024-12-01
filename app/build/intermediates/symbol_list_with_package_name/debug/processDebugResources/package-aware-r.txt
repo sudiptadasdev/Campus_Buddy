@@ -3680,6 +3680,7 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btnCancel
 id btnReset
+id btn_submit_edit_request
 id btn_submit_request
 id buttonPanel
 id cache_measures
@@ -3799,6 +3800,7 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
+id completeOfferButton
 id compress
 id confirm_button
 id constraint
@@ -3842,6 +3844,7 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id divider
 id down
 id dragAnticlockwise
 id dragClockwise
@@ -3858,9 +3861,8 @@ id easeInOut
 id easeOut
 id east
 id edge
-id editDetails
-id editSkill
-id editTitle
+id editOfferButton
+id editRequestButton
 id edit_query
 id edit_text_id
 id editoffer_tile
@@ -3875,6 +3877,9 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id et_details
+id et_edit_details
+id et_edit_skill
+id et_edit_title
 id et_skill
 id et_title
 id eventImageView
@@ -4107,7 +4112,6 @@ id right_side
 id rounded
 id row_index_key
 id rv_focus_area
-id saveButton
 id saveEventButton
 id save_non_transition_alpha
 id save_overlay_view
@@ -4405,9 +4409,14 @@ layout abc_tooltip
 layout activity_create_event
 layout activity_create_offer
 layout activity_create_request
+layout activity_edit_offer
 layout activity_edit_request
 layout activity_login
 layout activity_main
+layout activity_myaccepted_offers
+layout activity_myaccepted_requests
+layout activity_myoffers
+layout activity_myrequests
 layout activity_offer_home
 layout activity_request_home
 layout activity_sign_up
@@ -4503,7 +4512,11 @@ layout homepage_activity
 layout image_frame
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_acceptedrequests_card
 layout item_event_card
+layout item_myacceptedoffer_card
+layout item_myoffer_card
+layout item_myrequest_card
 layout item_offer_card
 layout item_request_card
 layout m3_alert_dialog

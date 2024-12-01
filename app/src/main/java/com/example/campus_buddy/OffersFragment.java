@@ -92,18 +92,13 @@ public class OffersFragment extends Fragment {
     private void getCurrentUser() {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
-            String userId = currentUser.getUid();
-            DocumentReference userRef = firestore.collection("Student").document(userId);
-
-            userRef.get().addOnSuccessListener(documentSnapshot -> {
-                if (documentSnapshot.exists()) {
-                    curUser = documentSnapshot.getString("email");
-                }
-            }).addOnFailureListener(e -> {
-                Log.e("Firestore", "Error fetching user data", e);
-            });
+            curUser = currentUser.getEmail(); // Directly fetch the email from the authenticated user
+            Log.i("CurrentUser", "Email: " + curUser);
+        } else {
+            Log.e("Authentication", "No user is currently signed in.");
         }
     }
+
 
     private void checkIfUserIsStudent() {
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -134,17 +129,19 @@ public class OffersFragment extends Fragment {
                     String skill = document.getString("skill");
                     String details = document.getString("details");
                     String creator = document.getString("created_by");
+                    String documentId = document.getId();
+                    String status = document.getString("status");
+                    String accepted_by = document.getString("accepted_by");
+                    System.out.println("The document id is:" + documentId);
 
-                    if (creator != null && creator.equals(curUser)) {
-                        Log.i("MyFilter", "Skipped title " + title);
+                    Offers offer = new Offers(title, skill, details, documentId, status, accepted_by,creator);
+                    if (creator.equals(curUser) || status.equals("Accepted") || status.equals("completed")) {
+                        System.out.println("Offer not added" + curUser + title);
                         continue;
                     }
-
-                    Offers offer = new Offers(title, skill, details);
-
-                    // Filter by title if a title query is provided
                     if (titleQuery == null || title.toLowerCase().contains(titleQuery.toLowerCase())) {
                         offersList.add(offer);
+                        System.out.println("Offer added" + curUser + title);
                     }
                 }
                 adapter.notifyDataSetChanged();

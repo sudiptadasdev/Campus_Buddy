@@ -56,7 +56,7 @@ public class RequestsFragment extends Fragment {
         // Initialize FAB and set its click listener
         addRequestFab = view.findViewById(R.id.addRequestFab);
         addRequestFab.setOnClickListener(v -> {
-            // Navigate to CreateOfferActivity to add a new offer
+            // Navigate to CreateRequestActivity to add a new request
             Intent intent = new Intent(getContext(), CreateRequestActivity.class);
             startActivity(intent);
         });
@@ -67,7 +67,7 @@ public class RequestsFragment extends Fragment {
         // Setup search functionality
         setupSearchView();
 
-        // Fetch and display offers
+        // Fetch and display requests
         fetchRequests(null);
 
         return view;
@@ -108,16 +108,10 @@ public class RequestsFragment extends Fragment {
     private void getCurrentUser() {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
-            String userId = currentUser.getUid();
-            DocumentReference userRef = firestore.collection("Student").document(userId);
-
-            userRef.get().addOnSuccessListener(documentSnapshot -> {
-                if (documentSnapshot.exists()) {
-                    curUser = documentSnapshot.getString("email");
-                }
-            }).addOnFailureListener(e -> {
-                Log.e("Firestore", "Error fetching user data", e);
-            });
+            curUser = currentUser.getEmail(); // Directly fetch the email from the authenticated user
+            Log.i("CurrentUser", "Email: " + curUser);
+        } else {
+            Log.e("Authentication", "No user is currently signed in.");
         }
     }
 
@@ -134,23 +128,26 @@ public class RequestsFragment extends Fragment {
                     String skill = document.getString("skill");
                     String details = document.getString("details");
                     String creator = document.getString("created_by");
+                    String status = document.getString("status");
+                    String accepted_by = document.getString("accepted_by");
+                    String documentId = document.getId();  // Fetch the document ID
 
-                    if (creator != null && creator.equals(curUser)) {
-                        Log.i("MyFilter", "Skipped title " + title);
+                    // Create a new Requests object with the document ID
+                    Requests request = new Requests(title, skill, details, documentId,status,accepted_by);
+
+                    // Filter requests by creator and query (if applicable)
+                    if (creator.equals(curUser) || status.equals("Accepted")) {
                         continue;
                     }
-
-                    Requests request = new Requests(title, skill, details);
-
-                    // Filter by title if a title query is provided
                     if (titleQuery == null || title.toLowerCase().contains(titleQuery.toLowerCase())) {
                         requestsList.add(request);
+                        System.out.println("Request added" + curUser + title);
                     }
                 }
                 adapter.notifyDataSetChanged();
             } else {
-                Log.e("Firestore", "Error fetching offers", task.getException());
-                Toast.makeText(getContext(), "Error fetching offers", Toast.LENGTH_SHORT).show();
+                Log.e("Firestore", "Error fetching requests", task.getException());
+                Toast.makeText(getContext(), "Error fetching requests", Toast.LENGTH_SHORT).show();
             }
         });
     }

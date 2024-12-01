@@ -14,16 +14,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-        <ImageView
-            android:id="@+id/eventImageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/sample"
-            android:scaleType="centerCrop"
-            android:contentDescription="Event Image"
-            android:background="@drawable/rounded_background"
-            android:layout_gravity="start"
-            android:layout_marginBottom="8dp"/>
 
         <ImageView
             android:id="@+id/eventImageView"

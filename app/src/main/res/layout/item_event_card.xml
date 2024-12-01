@@ -3,72 +3,87 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:padding="8dp">
+    android:layout_margin="12dp"
+    android:padding="16dp"
+    android:backgroundTint="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:layout_height="match_parent">
 
         <!-- Event Image -->
         <ImageView
             android:id="@+id/eventImageView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/sample"
-            android:scaleType="centerCrop"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentStart="true"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_background"
             android:contentDescription="Event Image"
-            android:background="@drawable/rounded_background"/>
+            android:elevation="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sample" />
 
-        <!-- Event Title next to the image -->
+        <!-- Event Title -->
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Event Title"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
+            android:layout_alignTop="@id/eventImageView"
+            android:layout_marginBottom="4dp"
             android:layout_toEndOf="@id/eventImageView"
-            android:layout_alignTop="@id/eventImageView"/>
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Event Title"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        <!-- Event Date below the title -->
+        <!-- Event Date -->
         <TextView
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MM/dd/yyyy"
-            android:textSize="14sp"
-            android:textColor="#757575"
-            android:layout_toEndOf="@id/eventImageView"
             android:layout_below="@id/titleTextView"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/eventImageView"
+            android:text="MM/dd/yyyy"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
 
-        <!-- Event Location below the date -->
+        <!-- Event Location -->
         <TextView
             android:id="@+id/locationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Location"
-            android:textSize="14sp"
-            android:textColor="#757575"
-            android:layout_toEndOf="@id/eventImageView"
             android:layout_below="@id/dateTextView"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/eventImageView"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Location"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
 
-        <!-- Event Description below the image -->
+        <!-- Divider -->
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/eventImageView"
+            android:layout_marginTop="16dp" />
+
+        <!-- Event Description -->
         <TextView
             android:id="@+id/summaryTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Event Description goes here..."
-            android:textSize="14sp"
+            android:layout_below="@id/divider"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
             android:lineSpacingExtra="4dp"
-            android:textColor="#424242"
-            android:layout_below="@id/eventImageView"
-            android:layout_marginTop="12dp"/>
+            android:maxLines="3"
+            android:text="Event Description goes here. This should provide concise yet engaging details about the event."
+            android:textSize="14sp" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
