@@ -37,6 +37,8 @@
         <activity android:name=".ProfileHomeActivity"></activity>
         <activity android:name=".MyOffersActivity"></activity>
         <activity android:name=".MyRequestsActivity"></activity>
+        <activity android:name=".EventsHomePage"></activity>
+        <activity android:name=".MyEventsActivity"></activity>
     </application>
 
 </manifest>

@@ -68,6 +68,8 @@
         <activity android:name="com.example.campus_buddy.ProfileHomeActivity" />
         <activity android:name="com.example.campus_buddy.MyOffersActivity" />
         <activity android:name="com.example.campus_buddy.MyRequestsActivity" />
+        <activity android:name="com.example.campus_buddy.EventsHomePage" />
+        <activity android:name="com.example.campus_buddy.MyEventsActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"

@@ -17,6 +17,7 @@ public class ProfileHomeActivity extends AppCompatActivity {
         LinearLayout myOffersTile = findViewById(R.id.my_offers_tile);
         LinearLayout myRequestsTile = findViewById(R.id.my_requests_tile);
         LinearLayout editProfileTile = findViewById(R.id.edit_profile_tile);
+        LinearLayout myEventsTile = findViewById(R.id.my_events_tile); // New My Events tile
 
         myOffersTile.setOnClickListener(view -> {
             Intent intent = new Intent(ProfileHomeActivity.this, MyOffersActivity.class);
@@ -30,6 +31,11 @@ public class ProfileHomeActivity extends AppCompatActivity {
 
         editProfileTile.setOnClickListener(view -> {
             Intent intent = new Intent(ProfileHomeActivity.this, EditProfileActivity.class);
+            startActivity(intent);
+        });
+
+        myEventsTile.setOnClickListener(view -> { // Add click listener for My Events
+            Intent intent = new Intent(ProfileHomeActivity.this, MyEventsActivity.class);
             startActivity(intent);
         });
     }

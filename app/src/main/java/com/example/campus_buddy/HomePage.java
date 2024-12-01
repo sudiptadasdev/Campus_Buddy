@@ -57,7 +57,7 @@ public class HomePage extends AppCompatActivity {
 
     // Open Events Activity
     private void openEventsActivity() {
-        Intent intent = new Intent(HomePage.this, MainActivity.class);
+        Intent intent = new Intent(HomePage.this, EventsHomePage.class);
         startActivity(intent);
     }
 

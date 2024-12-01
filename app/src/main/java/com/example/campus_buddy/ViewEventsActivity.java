@@ -6,19 +6,16 @@ import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import android.widget.SearchView;
-import androidx.fragment.app.Fragment;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,12 +24,13 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class EventsFragment extends Fragment {
+public class ViewEventsActivity extends AppCompatActivity {
 
     private FirebaseFirestore firestore;
     private FirebaseAuth auth;
@@ -44,49 +42,40 @@ public class EventsFragment extends Fragment {
     private TextView startDateTextView, endDateTextView;
     private Date startDate, endDate;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_events, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_events); // Use the correct layout for this activity
 
         // Initialize Firestore and Auth
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
         // Initialize RecyclerView and Adapter
-        recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        searchView = view.findViewById(R.id.searchView);
-        startDateTextView = view.findViewById(R.id.startDateTextView);
-        endDateTextView = view.findViewById(R.id.endDateTextView);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        searchView = findViewById(R.id.searchView);
+        startDateTextView = findViewById(R.id.startDateTextView);
+        endDateTextView = findViewById(R.id.endDateTextView);
         eventList = new ArrayList<>();
-        adapter = new EventAdapter(requireContext(), eventList);
+//        adapter = new EventAdapter(requireContext(), eventList);
         recyclerView.setAdapter(adapter);
 
         // Initialize FAB and set its click listener
-        addEventFab = view.findViewById(R.id.addEventFab);
+        addEventFab = findViewById(R.id.addEventFab);
         addEventFab.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), CreateEventActivity.class);
+            Intent intent = new Intent(ViewEventsActivity.this, CreateEventActivity.class);
             startActivity(intent);
         });
 
         setupSearchView();
         setupDateFilters();
 
-        addEventFab = view.findViewById(R.id.addEventFab);
-        addEventFab.setOnClickListener(v -> {
-            Log.i("MyFilter", "FAB clicked");
-            Intent intent = new Intent(getContext(), CreateEventActivity.class);
-            startActivity(intent);  // This opens the CreateEventActivity
-        });
-
         // Check if the user is an organization and show FAB accordingly
         checkIfUserIsOrganization();
 
         // Fetch and display events
         fetchEvents(null, null, null);
-
-        return view;
     }
 
     private void setupSearchView() {
@@ -99,8 +88,7 @@ public class EventsFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Optionally, you can trigger a search as the text changes
-                return false;
+                return false; // Optionally trigger search as the text changes
             }
         });
     }
@@ -112,7 +100,7 @@ public class EventsFragment extends Fragment {
 
     private void showDatePickerDialog(boolean isStartDate) {
         Calendar calendar = Calendar.getInstance();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 (view, year, month, dayOfMonth) -> {
                     calendar.set(year, month, dayOfMonth);
                     Date selectedDate = calendar.getTime();
@@ -156,19 +144,12 @@ public class EventsFragment extends Fragment {
         Query query = eventsRef;
 
         // Filter by title if a title query is provided
-//        if (titleQuery != null && !titleQuery.isEmpty()) {
-//            query = query.whereArrayContains("name", titleQuery);
-//        }
-
-        // Filter by date range if both start and end dates are selected
         if (start != null) {
             query = query.whereGreaterThanOrEqualTo("date", new Timestamp(start));
         }
         if (end != null) {
             query = query.whereLessThanOrEqualTo("date", new Timestamp(end));
         }
-
-//        Log.i("MyFilter", query.);
 
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -191,7 +172,7 @@ public class EventsFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             } else {
                 Log.e("Firestore", "Error fetching events", task.getException());
-                Toast.makeText(getContext(), "Error fetching events", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Error fetching events", Toast.LENGTH_SHORT).show();
             }
         });
     }
