@@ -43,6 +43,7 @@
         <activity android:name=".MyAcceptedRequestsActivity"></activity>
         <activity android:name=".EventsHomePage"></activity>
         <activity android:name=".MyEventsActivity"></activity>
+        <activity android:name=".EditEventActivity"></activity>
     </application>
 
 </manifest>

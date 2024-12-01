@@ -25,7 +25,7 @@ public class ProfileHomeActivity extends AppCompatActivity {
         });
 
         myRequestsTile.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfileHomeActivity.this, MyRequestsActivity.class);
+            Intent intent = new Intent(ProfileHomeActivity.this, MyRequestActivity.class);
             startActivity(intent);
         });
 

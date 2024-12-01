@@ -162,7 +162,7 @@ public class ViewEventsActivity extends AppCompatActivity {
 
                     if (timestamp != null) {
                         Date date = timestamp.toDate();
-                        Event event = new Event(title, timestamp, description, location);
+                        Event event = new Event(title, timestamp, description, location, "");
 
                         if (titleQuery == null || title.toLowerCase().contains(titleQuery.toLowerCase())) {
                             eventList.add(event);

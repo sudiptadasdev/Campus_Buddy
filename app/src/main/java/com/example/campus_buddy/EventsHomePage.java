@@ -48,7 +48,7 @@ public class EventsHomePage extends AppCompatActivity {
 
         editEventTile.setOnClickListener(view -> {
             if (isUserOrganization) {
-                Intent intent = new Intent(EventsHomePage.this, CreateEventActivity.class);
+                Intent intent = new Intent(EventsHomePage.this, EditEventActivity.class);
                 startActivity(intent);
             }
             else{

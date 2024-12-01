@@ -143,7 +143,7 @@ public class EventsFragment extends Fragment {
 
             userRef.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {
-                    addEventFab.setVisibility(View.VISIBLE);
+                    addEventFab.setVisibility(View.INVISIBLE);
                 }
             }).addOnFailureListener(e -> {
                 Log.e("Firestore", "Error fetching user data", e);
@@ -181,7 +181,7 @@ public class EventsFragment extends Fragment {
 
                     if (timestamp != null) {
                         Date date = timestamp.toDate();
-                        Event event = new Event(title, timestamp, description, location);
+                        Event event = new Event(title, timestamp, description, location, "");
 
                         if (titleQuery == null || title.toLowerCase().contains(titleQuery.toLowerCase())) {
                             eventList.add(event);

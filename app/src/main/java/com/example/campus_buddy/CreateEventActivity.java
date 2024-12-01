@@ -2,7 +2,9 @@ package com.example.campus_buddy;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,11 +26,13 @@ public class CreateEventActivity extends AppCompatActivity {
     private Button saveEventButton;
     private Timestamp eventTimestamp;
     private Calendar eventCalendar;
+    private String email;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
+        getEmail();
 
         // Initialize views
         titleEditText = findViewById(R.id.titleEditText);
@@ -38,6 +44,24 @@ public class CreateEventActivity extends AppCompatActivity {
 
         // Initialize the Calendar instance
         eventCalendar = Calendar.getInstance();
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            String title = intent.getStringExtra("title");
+            String summary = intent.getStringExtra("description");
+            String location = intent.getStringExtra("location");
+            String dateString = intent.getStringExtra("time");
+
+            Log.i("Edit Event Intent", "Title fetched: " + title);
+            Log.i("Edit Event Intent", "Summary fetched: " + summary);
+            Log.i("Edit Event Intent", "Location fetched: " + location);
+            Log.i("Edit Event Intent", "Date fetched: " + dateString);
+
+            titleEditText.setText(title);
+            summaryEditText.setText(summary);
+            locationEditText.setText(location);
+            dateTextView.setText(dateString);
+        }
 
         dateTextView.setOnClickListener(v -> showDatePickerDialog());
         timeTextView.setOnClickListener(v -> showTimePickerDialog());
@@ -90,7 +114,7 @@ public class CreateEventActivity extends AppCompatActivity {
             return;
         }
 
-        Event event = new Event(title, eventTimestamp, summary, location);
+        Event event = new Event(title, eventTimestamp, summary, location, email);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Event").add(event)
                 .addOnSuccessListener(documentReference -> {
@@ -100,5 +124,23 @@ public class CreateEventActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Error saving event", Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    private void getEmail() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+
+            db.collection("Organization").document(userId).get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            email = documentSnapshot.getString("email");
+                            Log.i("Email", "Email fetched: " + email);
+                        }
+                    });
+        }
     }
 }
