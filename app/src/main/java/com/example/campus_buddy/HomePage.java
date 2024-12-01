@@ -64,7 +64,7 @@ public class HomePage extends AppCompatActivity {
     // Open Profile Activity
     private void openProfileActivity() {
         Toast.makeText(HomePage.this, "Navigating to Profile", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(HomePage.this, ProfileHomeActivity.class);
+        Intent intent = new Intent(HomePage.this, MainActivity.class);
         startActivity(intent);
     }
 

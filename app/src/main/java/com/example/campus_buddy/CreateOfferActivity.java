@@ -88,6 +88,7 @@ public class CreateOfferActivity extends AppCompatActivity {
                 offerData.put("skill", skill);
                 offerData.put("status", "pending");
                 offerData.put("title", title);
+                offerData.put("accepted_by","");
 
                 // Add the offer to Firestore
                 offersRef.add(offerData)

@@ -79,6 +79,7 @@ public class CreateRequestActivity extends AppCompatActivity {
                 requestData.put("skill", skill);
                 requestData.put("status", "pending");
                 requestData.put("title", title);
+                requestData.put("accepted_by","");
 
                 // Add the request to Firestore
                 requestsRef.add(requestData)

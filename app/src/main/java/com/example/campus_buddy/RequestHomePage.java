@@ -17,6 +17,13 @@ public class RequestHomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_home);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Enable back button
+            getSupportActionBar().setTitle("Request Home"); // Set title
+        }
+
         // Set up click listeners for the tiles
         LinearLayout createRequestTile = findViewById(R.id.createrequest_tile);
         LinearLayout editRequestTile = findViewById(R.id.editrequest_tile);
@@ -29,12 +36,14 @@ public class RequestHomePage extends AppCompatActivity {
         });
 
         editRequestTile.setOnClickListener(view -> {
-            Intent intent = new Intent(RequestHomePage.this, RequestsFragment.class);
+            Intent intent = new Intent(RequestHomePage.this, MyRequestActivity.class);
+            intent.putExtra("FRAGMENT_TO_LOAD", "MyRequestsFragment");
             startActivity(intent);
         });
 
         viewAcceptedRequestsTile.setOnClickListener(view -> {
-            Intent intent = new Intent(RequestHomePage.this, CreateRequestActivity.class);
+            Intent intent = new Intent(RequestHomePage.this, MyAcceptedRequestsActivity.class);
+            intent.putExtra("FRAGMENT_TO_LOAD", "MyAcceptedRequestsFragment");
             startActivity(intent);
         });
 
