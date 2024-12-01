@@ -32,12 +32,20 @@
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\activity_create_request.xml"
     },
     {
-        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_item_offer_card.xml.flat",
-        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\item_offer_card.xml"
+        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_sign_up_organization.xml.flat",
+        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\activity_sign_up_organization.xml"
     },
     {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_myaccepted_requests.xml.flat",
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\activity_myaccepted_requests.xml"
+    },
+    {
+        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_item_offer_card.xml.flat",
+        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\item_offer_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_my_events.xml.flat",
+        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\activity_my_events.xml"
     },
     {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_item_acceptedrequests_card.xml.flat",
@@ -76,6 +84,10 @@
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\item_event_card.xml"
     },
     {
+        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_profile_home.xml.flat",
+        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\activity_profile_home.xml"
+    },
+    {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_dialog_forgot.xml.flat",
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\dialog_forgot.xml"
     },
@@ -90,6 +102,10 @@
     {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\xml_backup_rules.xml.flat",
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_edit_profile.xml.flat",
+        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\activity_edit_profile.xml"
     },
     {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\drawable_ic_offer.xml.flat",
@@ -136,6 +152,10 @@
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_choose_role.xml.flat",
+        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\activity_choose_role.xml"
+    },
+    {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\drawable_ic_baseline_lock_reset_24.xml.flat",
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\drawable\\ic_baseline_lock_reset_24.xml"
     },
@@ -160,8 +180,8 @@
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\drawable\\ic_profile.xml"
     },
     {
-        "merged": "com.example.campus_buddy.app-debug-41:/layout_activity_myaccepted_offers.xml.flat",
-        "source": "com.example.campus_buddy.app-main-43:/layout/activity_myaccepted_offers.xml"
+        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_edit_events.xml.flat",
+        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\activity_edit_events.xml"
     },
     {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_create_event.xml.flat",
@@ -170,6 +190,10 @@
     {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\drawable_custom_edittext.xml.flat",
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\drawable\\custom_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_events_home.xml.flat",
+        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\activity_events_home.xml"
     },
     {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_create_offer.xml.flat",
@@ -218,6 +242,14 @@
     {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_item_event.xml.flat",
+        "source": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-main-43:\\layout\\item_event.xml"
+    },
+    {
+        "merged": "com.example.campus_buddy.app-debug-41:/layout_activity_choose_role.xml.flat",
+        "source": "com.example.campus_buddy.app-main-43:/layout/activity_choose_role.xml"
     },
     {
         "merged": "C:\\Users\\sneha\\.gradle\\daemon\\8.7\\com.example.campus_buddy.app-debug-41:\\layout_activity_myrequests.xml.flat",

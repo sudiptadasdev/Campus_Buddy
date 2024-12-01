@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:2:1-45:12
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:2:1-51:12
 MERGED from [com.google.firebase:firebase-auth:22.0.0] C:\Users\sneha\.gradle\caches\transforms-4\e067728c3ac213df018dfeccf9473c5e\transformed\firebase-auth-22.0.0\AndroidManifest.xml:17:1-75:12
 MERGED from [com.google.firebase:firebase-database:20.2.2] C:\Users\sneha\.gradle\caches\transforms-4\f5d93be4503ac138c12b8bd593708182\transformed\firebase-database-20.2.2\AndroidManifest.xml:15:1-37:12
 MERGED from [com.google.firebase:firebase-firestore:24.6.1] C:\Users\sneha\.gradle\caches\transforms-4\ae9187229685b42586bf6e0e827b0232\transformed\firebase-firestore-24.6.1\AndroidManifest.xml:2:1-25:12
@@ -80,8 +80,8 @@ MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\sne
 	xmlns:android
 		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:5:5-43:19
-INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:5:5-43:19
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:5:5-49:19
+INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:5:5-49:19
 MERGED from [com.google.firebase:firebase-auth:22.0.0] C:\Users\sneha\.gradle\caches\transforms-4\e067728c3ac213df018dfeccf9473c5e\transformed\firebase-auth-22.0.0\AndroidManifest.xml:28:5-73:19
 MERGED from [com.google.firebase:firebase-auth:22.0.0] C:\Users\sneha\.gradle\caches\transforms-4\e067728c3ac213df018dfeccf9473c5e\transformed\firebase-auth-22.0.0\AndroidManifest.xml:28:5-73:19
 MERGED from [com.google.firebase:firebase-database:20.2.2] C:\Users\sneha\.gradle\caches\transforms-4\f5d93be4503ac138c12b8bd593708182\transformed\firebase-database-20.2.2\AndroidManifest.xml:27:5-35:19
@@ -214,30 +214,54 @@ activity#com.example.campus_buddy.EditProfileActivity
 ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:36:9-66
 	android:name
 		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:36:19-54
+activity#com.example.campus_buddy.ProfileHomeActivity
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:37:9-66
+	android:name
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:37:19-54
 activity#com.example.campus_buddy.MyOffersActivity
-ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:37:9-63
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:38:9-63
 	android:name
-		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:37:19-51
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:38:19-51
 activity#com.example.campus_buddy.MyRequestActivity
-ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:38:9-64
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:39:9-64
 	android:name
-		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:38:19-52
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:39:19-52
 activity#com.example.campus_buddy.EditRequestActivity
-ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:39:9-66
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:40:9-66
 	android:name
-		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:39:19-54
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:40:19-54
 activity#com.example.campus_buddy.EditOfferActivity
-ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:40:9-64
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:41:9-64
 	android:name
-		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:40:19-52
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:41:19-52
 activity#com.example.campus_buddy.MyAcceptedOffersActivity
-ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:41:9-71
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:42:9-71
 	android:name
-		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:41:19-59
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:42:19-59
 activity#com.example.campus_buddy.MyAcceptedRequestsActivity
-ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:42:9-73
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:43:9-73
 	android:name
-		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:42:19-61
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:43:19-61
+activity#com.example.campus_buddy.EventsHomePage
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:44:9-61
+	android:name
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:44:19-49
+activity#com.example.campus_buddy.MyEventsActivity
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:45:9-63
+	android:name
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:45:19-51
+activity#com.example.campus_buddy.EditEventActivity
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:46:9-64
+	android:name
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:46:19-52
+activity#com.example.campus_buddy.OrganizationSignUpActivity
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:47:9-73
+	android:name
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:47:19-61
+activity#com.example.campus_buddy.ChooseRoleActivity
+ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:48:9-65
+	android:name
+		ADDED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml:48:19-53
 uses-sdk
 INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\sneha\AndroidStudioProjects\Campus_Buddy\app\src\main\AndroidManifest.xml
