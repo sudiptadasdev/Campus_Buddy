@@ -74,6 +74,9 @@
         <activity android:name="com.example.campus_buddy.MyAcceptedRequestsActivity" />
         <activity android:name="com.example.campus_buddy.EventsHomePage" />
         <activity android:name="com.example.campus_buddy.MyEventsActivity" />
+        <activity android:name="com.example.campus_buddy.EditEventActivity" />
+        <activity android:name="com.example.campus_buddy.OrganizationSignUpActivity" />
+        <activity android:name="com.example.campus_buddy.ChooseRoleActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.GenericIdpActivity"
             android:excludeFromRecents="true"
