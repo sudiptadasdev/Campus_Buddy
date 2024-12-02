@@ -15,12 +15,12 @@ public class Event {
     // Firestore requires an empty constructor
     public Event() {}
 
-    public Event(String title, Timestamp date, String description, String location, String email) {
+    public Event(String title, Timestamp date, String description, String location, String created_by) {
         this.name = title;
         this.date = date;
         this.description = description;
         this.location = location;
-        this.email = email;
+        this.email = created_by;
     }
 
     public String getName() { return name; }

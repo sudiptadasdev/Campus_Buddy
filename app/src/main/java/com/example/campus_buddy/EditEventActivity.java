@@ -83,11 +83,12 @@ public class EditEventActivity extends AppCompatActivity {
                                                 String description = document.getString("description");
                                                 String location = document.getString("location");
                                                 Timestamp time = document.getTimestamp("date");
-                                                String creator = document.getString("created_by");
+                                                String creator = document.getString("email");
 
                                                 Log.i("Creator", "Creator fetched: " + creator);
 
                                                 if (creator != null && creator.equals(email)) {
+                                                    Log.i("Adding Event", "Adding event: " + title);
                                                     eventList.add(new Event(title, time, description, location, ""));
                                                 }
                                             }
