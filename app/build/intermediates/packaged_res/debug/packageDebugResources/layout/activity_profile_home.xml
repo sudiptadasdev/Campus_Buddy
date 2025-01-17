@@ -1,0 +1,152 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:title="Profile Home"
+        android:titleTextColor="@android:color/white"
+        android:elevation="4dp" />
+
+    <!-- Main content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_gravity="center">
+
+            <!-- Tile for My Offers -->
+            <LinearLayout
+                android:id="@+id/my_offers_tile"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:background="@drawable/tile_background"
+                android:gravity="center"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:elevation="8dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_offer"
+                    android:contentDescription="My Offers Icon"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Offers"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <!-- Tile for My Requests -->
+            <LinearLayout
+                android:id="@+id/my_requests_tile"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:background="@drawable/tile_background"
+                android:gravity="center"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:elevation="8dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_requests"
+                    android:contentDescription="My Requests Icon"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Requests"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <!-- Tile for Edit Profile -->
+            <LinearLayout
+                android:id="@+id/edit_profile_tile"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:background="@drawable/tile_background"
+                android:gravity="center"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:elevation="8dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_events"
+                    android:contentDescription="Edit Profile Icon"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Profile"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <!-- Tile for My Events -->
+            <LinearLayout
+                android:id="@+id/my_events_tile"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:orientation="vertical"
+                android:background="@drawable/tile_background"
+                android:gravity="center"
+                android:padding="16dp"
+                android:layout_margin="8dp"
+                android:elevation="8dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_events"
+                    android:contentDescription="My Events Icon"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Events"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

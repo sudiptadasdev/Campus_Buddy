@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.campus_buddy"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="29"
+        android:targetSdkVersion="34" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <queries>
+
+        <!-- Required for querying the IME service at runtime -->
+        <intent>
+            <action android:name="android.view.InputMethod" />
+        </intent>
+        <!-- Required for querying the plugin at runtime -->
+        <provider
+            android:name="com.android.car.ui.plugin.PluginNameProvider"
+            android:authorities="com.android.car.ui.plugin" />
+    </queries>
+
+    <permission
+        android:name="com.example.campus_buddy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.campus_buddy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:debuggable="true"
+        android:extractNativeLibs="false"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/Theme.Campus_Buddy" >
+        <activity
+            android:name="com.example.campus_buddy.LoginActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.campus_buddy.SignUpActivity" />
+        <activity
+            android:name="com.example.campus_buddy.RequestHomePage"
+            android:parentActivityName="com.example.campus_buddy.HomePage" />
+        <activity android:name="com.example.campus_buddy.CreateEventActivity" />
+        <activity android:name="com.example.campus_buddy.CreateRequestActivity" />
+        <activity android:name="com.example.campus_buddy.OffersFragment" />
+        <activity android:name="com.example.campus_buddy.EventsFragment" />
+        <activity android:name="com.example.campus_buddy.MainActivity" />
+        <activity android:name="com.example.campus_buddy.HomePage" />
+        <activity android:name="com.example.campus_buddy.RequestsFragment" />
+        <activity android:name="com.example.campus_buddy.OfferHomePage" />
+        <activity android:name="com.example.campus_buddy.CreateOfferActivity" />
+        <activity android:name="com.example.campus_buddy.EditProfileActivity" />
+        <activity android:name="com.example.campus_buddy.ProfileHomeActivity" />
+        <activity android:name="com.example.campus_buddy.MyOffersActivity" />
+        <activity android:name="com.example.campus_buddy.MyRequestActivity" />
+        <activity android:name="com.example.campus_buddy.EditRequestActivity" />
+        <activity android:name="com.example.campus_buddy.EditOfferActivity" />
+        <activity android:name="com.example.campus_buddy.MyAcceptedOffersActivity" />
+        <activity android:name="com.example.campus_buddy.MyAcceptedRequestsActivity" />
+        <activity android:name="com.example.campus_buddy.EventsHomePage" />
+        <activity android:name="com.example.campus_buddy.MyEventsActivity" />
+        <activity android:name="com.example.campus_buddy.EditEventActivity" />
+        <activity android:name="com.example.campus_buddy.OrganizationSignUpActivity" />
+        <activity android:name="com.example.campus_buddy.ChooseRoleActivity" />
+        <activity
+            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="firebase.auth"
+                    android:path="/"
+                    android:scheme="genericidp" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="firebase.auth"
+                    android:path="/"
+                    android:scheme="recaptcha" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+
+        <provider
+            android:name="com.android.car.ui.core.CarUiInstaller"
+            android:authorities="com.example.campus_buddy.CarUiInstaller"
+            android:directBootAware="true"
+            android:exported="false"
+            android:process="@string/car_ui_installer_process_name" />
+        <provider
+            android:name="com.android.car.ui.core.SearchResultsProvider"
+            android:authorities="com.example.campus_buddy.SearchResultsProvider"
+            android:exported="true"
+            android:process="@string/car_ui_installer_process_name"
+            android:readPermission="com.android.car.ui.READ_SEARCH_RESULTS" />
+
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--
+            Service handling Google Sign-In user revocation. For apps that do not integrate with
+            Google Sign-In, this service will never be started.
+        -->
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:exported="true"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+            android:visibleToInstantApps="true" />
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.example.campus_buddy.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.example.campus_buddy.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <receiver
+            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+            android:directBootAware="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.DUMP" >
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

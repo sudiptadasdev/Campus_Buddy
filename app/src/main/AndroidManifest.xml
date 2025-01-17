@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Campus_Buddy"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,30 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".RequestHomePage" android:parentActivityName=".HomePage"></activity>
+        <activity android:name=".CreateEventActivity"></activity>
+        <activity android:name=".CreateRequestActivity"></activity>
+        <activity android:name=".OffersFragment"></activity>
+        <activity android:name=".EventsFragment"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".HomePage"></activity>
+        <activity android:name=".RequestsFragment"></activity>
+        <activity android:name=".OfferHomePage"></activity>
+        <activity android:name=".CreateOfferActivity"></activity>
+        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".ProfileHomeActivity"></activity>
+        <activity android:name=".MyOffersActivity"></activity>
+        <activity android:name=".MyRequestActivity"></activity>
+        <activity android:name=".EditRequestActivity"></activity>
+        <activity android:name=".EditOfferActivity"></activity>
+        <activity android:name=".MyAcceptedOffersActivity"></activity>
+        <activity android:name=".MyAcceptedRequestsActivity"></activity>
+        <activity android:name=".EventsHomePage"></activity>
+        <activity android:name=".MyEventsActivity"></activity>
+        <activity android:name=".EditEventActivity"></activity>
+        <activity android:name=".OrganizationSignUpActivity"></activity>
+        <activity android:name=".ChooseRoleActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,10 @@
 [versions]
 agp = "8.6.1"
+cardviewVersion = "1.0.0"
+drawerlayout = "1.2.0"
+drawerlayoutVersion = "1.1.1"
+googleMaterial = "1.7.0"
+googleMaterialVersion = "1.4.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
@@ -7,13 +12,21 @@ appcompat = "1.6.1"
 material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
+materialVersion = "1.9.0"
 playServicesTasks = "18.2.0"
 firebaseAuth = "23.0.0"
 playServicesAuth="20.4.0"
 gbutton="v1.0.19"
 googleGmsGoogleServices = "4.4.2"
+carUiLib = "2.6.0"
 
 [libraries]
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardviewVersion" }
+drawerlayout = { module = "androidx.drawerlayout:drawerlayout", version.ref = "drawerlayout" }
+drawerlayout-v111 = { module = "androidx.drawerlayout:drawerlayout", version.ref = "drawerlayoutVersion" }
+firebase-database = { module = "com.google.firebase:firebase-database" }
+firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
+google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -21,10 +34,14 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material-v140 = { module = "com.google.android.material:material", version.ref = "googleMaterialVersion" }
+material-v170 = { module = "com.google.android.material:material", version.ref = "googleMaterial" }
+material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 play-services-tasks = { group = "com.google.android.gms", name = "play-services-tasks", version.ref = "playServicesTasks" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 play-services-auth={group="com.google.android.gms" ,name="play-services-auth" ,version.ref="playServicesAuth"}
 tutorial-android={group="com.github.TutorialsAndroid",name="GButton", version.ref="gbutton"}
+car-ui-lib = { group = "com.android.car.ui", name = "car-ui-lib", version.ref = "carUiLib" }
 
 
 [plugins]

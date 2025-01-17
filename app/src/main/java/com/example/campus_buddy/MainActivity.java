@@ -1,63 +1,105 @@
 package com.example.campus_buddy;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-
-
-
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView userName;
-    Button logout;
-    GoogleSignInClient gClient;
-    GoogleSignInOptions gOptions;
+    private TextView eventsTab, offersTab, requestsTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        logout = findViewById(R.id.logout);
-        userName = findViewById(R.id.userName);
-
-        gOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        gClient = GoogleSignIn.getClient(this, gOptions);
-
-        GoogleSignInAccount gAccount = GoogleSignIn.getLastSignedInAccount(this);
-        if (gAccount != null){
-            String gName = gAccount.getDisplayName();
-            userName.setText(gName);
+        // Set up toolbar as action bar
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Enable back button
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
 
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    }
-                });
+        eventsTab = findViewById(R.id.eventsTab);
+        offersTab = findViewById(R.id.offersTab);
+        requestsTab = findViewById(R.id.requestsTab);
+
+        // Load Offers fragment by default
+        loadFragment(new EventsFragment());
+
+        String fragmentToLoad = getIntent().getStringExtra("FRAGMENT_TO_LOAD");
+
+        if ("OffersFragment".equals(fragmentToLoad)) {
+            offersTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            eventsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            requestsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            loadFragment(new OffersFragment());
+        }
+
+        if ("RequestsFragment".equals(fragmentToLoad)) {
+            requestsTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            eventsTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            offersTab.setBackgroundColor(getResources().getColor(R.color.gray));
+            loadFragment(new RequestsFragment());
+        }
+
+        // Set click listeners for the footer tabs
+        eventsTab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTabSelection(eventsTab, offersTab, requestsTab);
+                loadFragment(new EventsFragment());
             }
         });
+
+        offersTab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTabSelection(offersTab, eventsTab, requestsTab);
+                loadFragment(new OffersFragment());
+            }
+        });
+
+        requestsTab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTabSelection(requestsTab, eventsTab, offersTab);
+                loadFragment(new RequestsFragment());
+            }
+        });
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void updateTabSelection(TextView selectedTab, TextView... otherTabs) {
+        selectedTab.setBackgroundColor(getResources().getColor(R.color.purple_500));
+        for (TextView tab : otherTabs) {
+            tab.setBackgroundColor(getResources().getColor(R.color.gray));
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            // Handle back button press
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack();
+            } else {
+                onBackPressed();
+            }
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

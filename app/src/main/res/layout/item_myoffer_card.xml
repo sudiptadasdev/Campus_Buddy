@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:padding="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="#FFFFFF"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
+
+        <!-- LinearLayout for stacking views -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- Image to enhance decoration -->
+            <ImageView
+                android:id="@+id/eventImageView"
+                android:layout_width="379dp"
+                android:layout_height="60dp"
+                android:layout_gravity="start"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/rounded_background"
+                android:contentDescription="Event Image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sample" />
+
+            <!-- Title with better emphasis -->
+            <TextView
+                android:id="@+id/offerTitleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offer Title"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="#6200EE"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Skill text with subtitle styling -->
+            <TextView
+                android:id="@+id/offerSkillTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Skill Required: Example Skill"
+                android:textSize="16sp"
+                android:textColor="#757575"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Details text -->
+            <TextView
+                android:id="@+id/offerDetailsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offer Date: MM/DD/YYYY"
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Decorative button -->
+            <Button
+                android:id="@+id/editOfferButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit Offer"
+                android:backgroundTint="#6200EE"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_check"
+                android:drawablePadding="8dp"
+                android:layout_marginTop="8dp"
+                android:padding="12dp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</ScrollView>
