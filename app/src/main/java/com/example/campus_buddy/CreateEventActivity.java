@@ -27,6 +27,7 @@ public class CreateEventActivity extends AppCompatActivity {
     private Timestamp eventTimestamp;
     private Calendar eventCalendar;
     private String email;
+    private boolean edit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +52,7 @@ public class CreateEventActivity extends AppCompatActivity {
             String summary = intent.getStringExtra("description");
             String location = intent.getStringExtra("location");
             String dateString = intent.getStringExtra("time");
+            edit = intent.getBooleanExtra("edit", false);
 
             Log.i("Edit Event Intent", "Title fetched: " + title);
             Log.i("Edit Event Intent", "Summary fetched: " + summary);
@@ -65,7 +67,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
         dateTextView.setOnClickListener(v -> showDatePickerDialog());
         timeTextView.setOnClickListener(v -> showTimePickerDialog());
-        saveEventButton.setOnClickListener(v -> saveEvent());
+        saveEventButton.setOnClickListener(v -> saveEvent(edit));
     }
 
     private void showDatePickerDialog() {
@@ -104,7 +106,7 @@ public class CreateEventActivity extends AppCompatActivity {
         timePickerDialog.show();
     }
 
-    private void saveEvent() {
+    private void saveEvent(boolean edit) {
         String title = titleEditText.getText().toString().trim();
         String summary = summaryEditText.getText().toString().trim();
         String location = locationEditText.getText().toString().trim();
@@ -114,16 +116,35 @@ public class CreateEventActivity extends AppCompatActivity {
             return;
         }
 
-        Event event = new Event(title, eventTimestamp, summary, location, email);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Event").add(event)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(this, "Event saved", Toast.LENGTH_SHORT).show();
-                    finish();  // Close the activity
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Error saving event", Toast.LENGTH_SHORT).show();
-                });
+        if (edit) {
+            Event event = new Event(title, eventTimestamp, summary, location, email);
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("Event").whereEqualTo("email", email)
+                    .get().addOnSuccessListener(documentReference -> {
+                        String documentId = documentReference.getDocuments().get(0).getId();
+                        db.collection("Event").document(documentId)
+                                .update("name", title,
+                                        "description", summary,
+                                        "location", location,
+                                        "date", eventTimestamp)
+                                .addOnSuccessListener(aVoid -> {
+                                    Toast.makeText(this, "Event updated", Toast.LENGTH_SHORT).show();
+                                    finish();  // Close the activity
+                                });
+                    });
+        }
+        else {
+            Event event = new Event(title, eventTimestamp, summary, location, email);
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("Event").add(event)
+                    .addOnSuccessListener(documentReference -> {
+                        Toast.makeText(this, "Event saved", Toast.LENGTH_SHORT).show();
+                        finish();  // Close the activity
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "Error saving event", Toast.LENGTH_SHORT).show();
+                    });
+        }
     }
 
     private void getEmail() {

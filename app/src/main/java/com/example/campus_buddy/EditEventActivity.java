@@ -114,6 +114,7 @@ public class EditEventActivity extends AppCompatActivity {
         intent.putExtra("description", event.getDescription());
         intent.putExtra("location", event.getLocation());
         intent.putExtra("time", event.getDateString());
+        intent.putExtra("edit", true);
 
         startActivity(intent);
     }

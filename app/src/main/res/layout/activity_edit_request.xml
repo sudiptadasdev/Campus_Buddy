@@ -36,12 +36,12 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit Offer"
-                android:textSize="35sp"
-                android:textStyle="bold"
-                android:textColor="@color/lavender"
                 android:layout_marginBottom="16dp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:text="Edit Request"
+                android:textColor="@color/lavender"
+                android:textSize="35sp"
+                android:textStyle="bold" />
 
             <!-- Form CardView -->
             <androidx.cardview.widget.CardView

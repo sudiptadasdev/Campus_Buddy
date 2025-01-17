@@ -53,7 +53,7 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Reques
             // Show confirmation dialog
             new AlertDialog.Builder(context)
                     .setTitle("Accept Offer")
-                    .setMessage("Do you really want to accept this offer?")
+                    .setMessage("Do you really want to accept this request?")
                     .setPositiveButton("Yes", (dialog, which) -> {
                         String documentId = request.getDocumentId();
                         Log.d("Firestore", "Updating offer with document ID: " + documentId);
@@ -65,8 +65,8 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Reques
                                 .update("status", "Accepted", "accepted_by", currentUserEmail) // Add the email of the logged-in user
                                 .addOnSuccessListener(aVoid -> {
                                     // Successfully updated offer
-                                    Toast.makeText(context, "Offer Accepted: " + request.getTitle(), Toast.LENGTH_SHORT).show();
-                                    Log.d("Firestore", "Offer status updated successfully.");
+                                    Toast.makeText(context, "Request Accepted: " + request.getTitle(), Toast.LENGTH_SHORT).show();
+                                    Log.d("Firestore", "Request status updated successfully.");
 
                                     // Update the offer object in the list and notify adapter
                                     request.setStatus("Accepted");
@@ -75,8 +75,8 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Reques
                                 })
                                 .addOnFailureListener(e -> {
                                     // Failed to update the offer
-                                    Log.e("Firestore", "Error updating offer: ", e);
-                                    Toast.makeText(context, "Failed to accept offer. Please try again.", Toast.LENGTH_SHORT).show();
+                                    Log.e("Firestore", "Error updating request: ", e);
+                                    Toast.makeText(context, "Failed to accept request. Please try again.", Toast.LENGTH_SHORT).show();
                                 });
                     })
                     .setNegativeButton("No", null)
